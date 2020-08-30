@@ -1,0 +1,29 @@
+{
+  "name": "hunt",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "axios": "0.20.0",
+    "cookie-parser": "1.4.5",
+    "cors": "2.8.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "formik": "2.1.5",
+    "next": "9.5.2",
+    "passport-facebook": "3.0.0",
+    "passport-google-oauth20": "2.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "styled-components": "5.1.1",
+    "yup": "0.29.3"
+  },
+  "author": "@alvlinarez",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "2.1.1"
+  }
+}
