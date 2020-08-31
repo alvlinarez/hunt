@@ -24,6 +24,7 @@
   "author": "@alvlinarez",
   "license": "ISC",
   "devDependencies": {
+    "babel-plugin-styled-components": "1.11.1",
     "prettier": "2.1.1"
   }
 }
