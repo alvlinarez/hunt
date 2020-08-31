@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import { Container, Logo } from '../../styles/components/layout/headerStyles';
-import Search from '../ui/Search';
+import Search from './Search';
 import Navigation from './Navigation';
 import { AuthContext } from '../../context/auth/AuthContext';
 import { Button } from '../../styles/components/ui/buttonStyles';
+import { useRouter } from 'next/router';
 
 const Header = () => {
   const authContext = useContext(AuthContext);
   const { user, signOut, authenticated } = authContext;
+  const router = useRouter();
   return (
     <header
       style={{
@@ -48,7 +50,7 @@ const Header = () => {
               >
                 Hi: {user.name}
               </p>
-              <Button bgColor="true" onClick={() => signOut()}>
+              <Button bgColor="true" onClick={() => signOut(router)}>
                 Sign Out
               </Button>
             </>
