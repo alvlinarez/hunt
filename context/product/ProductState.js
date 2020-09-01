@@ -175,7 +175,7 @@ export const ProductState = ({ children }) => {
     }
   };
 
-  const deleteProduct = async ({ id }) => {
+  const deleteProduct = async ({ id }, router) => {
     dispatch({
       type: PRODUCT_LOADING
     });
@@ -185,6 +185,7 @@ export const ProductState = ({ children }) => {
         type: DELETE_PRODUCT_SUCCESS,
         payload: id
       });
+      router.push('/');
     } catch (e) {
       dispatch({
         type: DELETE_PRODUCT_ERROR,

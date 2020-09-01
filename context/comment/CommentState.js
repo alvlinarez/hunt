@@ -46,7 +46,7 @@ export const CommentState = ({ children }) => {
       type: COMMENT_LOADING
     });
     try {
-      const { data } = await axiosClient().put(
+      const { data } = await axiosClient().post(
         `product/${productId}/addComment`,
         {
           message
@@ -69,7 +69,7 @@ export const CommentState = ({ children }) => {
       type: COMMENT_LOADING
     });
     try {
-      await axiosClient().put(`product/${productId}/removeTask`, {
+      await axiosClient().delete(`product/${productId}/removeTask`, {
         commentId: comment.id
       });
       dispatch({

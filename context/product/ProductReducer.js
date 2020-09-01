@@ -57,14 +57,15 @@ const ProductReducer = (state, action) => {
             item = action.payload;
           }
           return item;
-        })
+        }),
+        currentProduct: action.payload
       };
     case DELETE_PRODUCT_SUCCESS:
       return {
         ...state,
         productLoading: false,
         productError: null,
-        products: state.products.filter((item) => item.id === action.payload),
+        products: state.products.filter((item) => item.id !== action.payload),
         currentProduct: {}
       };
     case RESET_PRODUCT_STATE:

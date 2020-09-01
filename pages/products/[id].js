@@ -14,21 +14,28 @@ import {
 } from '../../styles/pages/products/productsStyles';
 import { ButtonSubmit, FormDiv } from '../../styles/components/ui/formStyles';
 import { Button } from '../../styles/components/ui/buttonStyles';
+import { CommentContext } from '../../context/comment/CommentContext';
 
 const Product = () => {
   const router = useRouter();
   const { id } = router.query;
   const authContext = useContext(AuthContext);
   const { authenticated, user } = authContext;
+  const commentContext = useContext(CommentContext);
+  const { comments, getComments, addCommentToProduct } = commentContext;
   const productContext = useContext(ProductContext);
   const {
+    products,
     productLoading,
     currentProduct,
+    productError,
     getProduct,
-    productError
+    getProducts,
+    voteProduct,
+    unvoteProduct,
+    deleteProduct
   } = productContext;
   const {
-    comments,
     createdAt,
     description,
     company,
@@ -40,13 +47,19 @@ const Product = () => {
     hasVoted
   } = currentProduct;
 
+  const canVote =
+    hasVoted && hasVoted.filter((item) => item.id === user.id).length <= 0;
   useEffect(() => {
-    getProduct(id);
-  }, []);
-  if (!productLoading && productError) {
-    // If there is no product with the id
-    return <Error error={{ statusCode: 404 }} />;
-  }
+    if (!products) {
+      getProducts();
+      //getProduct(id);
+    }
+    if (Object.keys(currentProduct).length <= 0) {
+      getProduct(id);
+    } else {
+      getComments(currentProduct.comments);
+    }
+  }, [currentProduct]);
 
   const formik = useFormik({
     initialValues: {
@@ -55,10 +68,17 @@ const Product = () => {
     validationSchema: yup.object({
       message: yup.string().required()
     }),
-    onSubmit: (values) => {}
+    onSubmit: (values) => {
+      addCommentToProduct(currentProduct.id, values);
+    }
   });
 
-  if (Object.keys(currentProduct) <= 0) {
+  if (!productLoading && productError) {
+    // If there is no product with the id
+    return <Error error={{ statusCode: 404 }} />;
+  }
+
+  if (!productError && Object.keys(currentProduct) <= 0) {
     return null;
   }
 
@@ -66,14 +86,22 @@ const Product = () => {
     return id === user.id;
   };
 
-  const handleVote = () => {};
+  const handleVote = () => {
+    if (canVote) {
+      voteProduct(currentProduct.id);
+    } else {
+      unvoteProduct(currentProduct.id);
+    }
+  };
 
   const allowDelete = () => {
     if (!authenticated) return false;
     return currentProduct.creator.id === user.id;
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    deleteProduct(currentProduct, router);
+  };
 
   return (
     <Layout>
@@ -109,6 +137,9 @@ const Product = () => {
                   </FormDiv>
                   <ButtonSubmit type="submit">Add comment</ButtonSubmit>
                 </form>
+                {formik.errors.message && (
+                  <p style={{ color: 'red' }}>Message is required</p>
+                )}
               </>
             )}
 
@@ -167,7 +198,11 @@ const Product = () => {
               >
                 {votes} Votes
               </p>
-              {authenticated && <Button onClick={handleVote}>Vote</Button>}
+              {authenticated && (
+                <Button onClick={handleVote}>
+                  {canVote ? 'Vote' : 'Unvote'}
+                </Button>
+              )}
             </div>
           </aside>
         </ProductContainer>
