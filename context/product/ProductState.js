@@ -93,6 +93,7 @@ export const ProductState = ({ children }) => {
         type: ADD_PRODUCT_SUCCESS,
         payload: data.product
       });
+      window.location.href = `/products/${data.product.id}`;
     } catch (e) {
       dispatch({
         type: ADD_PRODUCT_ERROR,

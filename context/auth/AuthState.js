@@ -60,13 +60,10 @@ export const AuthState = ({ user = {}, children }) => {
         type: SIGN_UP_SUCCESS,
         payload: data.message
       });
-      // setTimeout to wait for showing Alert and then redirect
-      setTimeout(() => {
-        router.push('/signin');
-        dispatch({
-          type: RESET_AUTH_MESSAGE
-        });
-      }, 1500);
+      router.push('/signin');
+      dispatch({
+        type: RESET_AUTH_MESSAGE
+      });
     } catch (e) {
       dispatch({
         type: SIGN_UP_ERROR,
