@@ -1,5 +1,4 @@
-import React from 'react';
-import Head from 'next/head';
+import React, { useContext, useEffect } from 'react';
 import Layout from '../components/layout/Layout';
 import {
   ProductList,
@@ -7,14 +6,25 @@ import {
   ProductListUl
 } from '../styles/pages/indexStyles';
 import ProductDetails from '../components/layout/ProductDetails';
+import { ProductContext } from '../context/product/ProductContext';
 
 export default function Home() {
+  const productContext = useContext(ProductContext);
+  const { products, getProducts, productError } = productContext;
+  useEffect(() => {
+    if (!products) {
+      getProducts();
+    }
+  }, []);
   return (
     <Layout>
       <ProductList>
         <ProductListContainer>
           <ProductListUl>
-            {<ProductDetails key={1} product={'ga'} />}
+            {products &&
+              products.map((product) => (
+                <ProductDetails key={product.id} product={product} />
+              ))}
           </ProductListUl>
         </ProductListContainer>
       </ProductList>

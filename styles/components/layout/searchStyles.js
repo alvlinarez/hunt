@@ -11,7 +11,7 @@ export const ButtonSubmit = styled.button`
   width: 3rem;
   display: block;
   background-size: 4rem;
-  background-image: url('/img/search.png');
+  background-image: url('/static/img/search.png');
   background-repeat: no-repeat;
   position: absolute;
   right: 1rem;

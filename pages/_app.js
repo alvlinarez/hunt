@@ -7,6 +7,8 @@ import { axiosClient } from '../config/axios';
 import { routes } from '../utils/routes';
 import { redirectUser } from '../utils/redirectUser';
 import GlobalStyle from '../styles/GlobalStyles';
+import { ProductState } from '../context/product/ProductState';
+import { CommentState } from '../context/comment/CommentState';
 
 function MyApp({ Component, pageProps }) {
   const { user, error } = pageProps;
@@ -14,10 +16,14 @@ function MyApp({ Component, pageProps }) {
     return <Error error={error} />;
   }
   return (
-    <AuthState user={user}>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </AuthState>
+    <ProductState>
+      <CommentState>
+        <AuthState user={user}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </AuthState>
+      </CommentState>
+    </ProductState>
   );
 }
 

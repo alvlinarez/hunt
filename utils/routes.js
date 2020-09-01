@@ -14,7 +14,7 @@ export const routes = [
   },
   {
     path: '/products/[id]',
-    type: 1
+    type: 3
   },
   {
     path: '/new-product',
