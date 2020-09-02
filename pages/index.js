@@ -12,9 +12,7 @@ export default function Home() {
   const productContext = useContext(ProductContext);
   const { products, getProducts, productError } = productContext;
   useEffect(() => {
-    if (!products) {
-      getProducts();
-    }
+    getProducts();
   }, []);
   return (
     <Layout>

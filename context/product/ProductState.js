@@ -49,6 +49,28 @@ export const ProductState = ({ children }) => {
     }
   };
 
+  const getPopularProducts = async () => {
+    dispatch({
+      type: PRODUCT_LOADING
+    });
+    try {
+      const { data } = await axiosClient().get('product', {
+        params: {
+          populars: true
+        }
+      });
+      dispatch({
+        type: GET_PRODUCTS_SUCCESS,
+        payload: data.products
+      });
+    } catch (e) {
+      dispatch({
+        type: GET_PRODUCTS_ERROR,
+        payload: e.response.data.error
+      });
+    }
+  };
+
   const getProduct = async (productId) => {
     dispatch({
       type: PRODUCT_LOADING
@@ -202,6 +224,7 @@ export const ProductState = ({ children }) => {
         productLoading: state.productLoading,
         productError: state.productError,
         getProducts,
+        getPopularProducts,
         getProduct,
         createProduct,
         updateProduct,
