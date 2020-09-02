@@ -10,6 +10,10 @@ import {
   FormDiv
 } from '../styles/components/ui/formStyles';
 import Layout from '../components/layout/Layout';
+import {
+  SocialMediaContainer,
+  SocialMediaIconContainer
+} from '../styles/pages/signinStyles';
 
 const SignIn = () => {
   const authContext = useContext(AuthContext);
@@ -77,6 +81,18 @@ const SignIn = () => {
         {error && <Error>{error}</Error>}
         <ButtonSubmit type="submit">Sign In</ButtonSubmit>
       </Form>
+
+      <SocialMediaContainer>
+        <SocialMediaIconContainer>
+          <img src="/static/img/google-icon.png" alt="Google Icon" />
+          <a href="/auth/google">Sign In with Google</a>
+        </SocialMediaIconContainer>
+
+        <SocialMediaIconContainer>
+          <img src="/static/img/facebook-icon.png" alt="Facebook Icon" />
+          <a href="/auth/facebook">Sign In with Facebook</a>
+        </SocialMediaIconContainer>
+      </SocialMediaContainer>
     </Layout>
   );
 };
