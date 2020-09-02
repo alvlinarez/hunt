@@ -10,6 +10,7 @@ import {
   Image,
   Votes
 } from '../../styles/components/layout/productDetailsStyles';
+import { apiUrl } from '../../config/axios';
 
 const ProductDetails = ({ product }) => {
   const {
@@ -27,7 +28,7 @@ const ProductDetails = ({ product }) => {
     <Product>
       <ProductDescription>
         <div>
-          <Image src={urlImage} alt={name} />
+          <Image src={`${apiUrl}/${urlImage}`} alt={name} />
         </div>
         <div>
           <Link href="/products/[id]" as={`/products/${id}`}>

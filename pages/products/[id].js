@@ -15,6 +15,7 @@ import {
 import { ButtonSubmit, FormDiv } from '../../styles/components/ui/formStyles';
 import { Button } from '../../styles/components/ui/buttonStyles';
 import { CommentContext } from '../../context/comment/CommentContext';
+import { apiUrl } from '../../config/axios';
 
 const Product = () => {
   const router = useRouter();
@@ -120,7 +121,7 @@ const Product = () => {
             <p>
               By: {creator.name} of {company}
             </p>
-            <img src={urlImage} alt={name} />
+            <img src={`${apiUrl}/${urlImage}`} alt={name} />
             <p>{description}</p>
             {authenticated && (
               <>
