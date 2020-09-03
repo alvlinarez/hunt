@@ -5,6 +5,9 @@ export const SocialMediaContainer = styled.div`
   flex-direction: column;
   margin: 5rem auto 0 auto;
   width: 40%;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 export const SocialMediaIconContainer = styled.div`

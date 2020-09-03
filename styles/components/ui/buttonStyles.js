@@ -16,4 +16,9 @@ export const Button = styled.a`
   &:hover {
     cursor: pointer;
   }
+  @media (max-width: 768px) {
+    &:last-of-type {
+      margin-right: auto;
+    }
+  }
 `;

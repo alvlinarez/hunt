@@ -14,4 +14,14 @@ export const Nav = styled.nav`
       color: var(--gray);
     }
   }
+  @media (max-width: 768px) {
+    padding-left: 0;
+    padding-top: 2rem;
+    a {
+      margin-left: 0;
+      &:last-of-type {
+        margin-left: 2rem;
+      }
+    }
+  }
 `;

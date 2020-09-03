@@ -1,6 +1,11 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
-import { Container, Logo } from '../../styles/components/layout/headerStyles';
+import {
+  AuthContainer,
+  Container,
+  Logo,
+  NavContainer
+} from '../../styles/components/layout/headerStyles';
 import Search from './Search';
 import Navigation from './Navigation';
 import { AuthContext } from '../../context/auth/AuthContext';
@@ -19,12 +24,7 @@ const Header = () => {
       }}
     >
       <Container>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center'
-          }}
-        >
+        <NavContainer>
           <Link href="/">
             <a>
               <Logo>P</Logo>
@@ -34,22 +34,11 @@ const Header = () => {
           <Search />
 
           <Navigation />
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center'
-          }}
-        >
+        </NavContainer>
+        <AuthContainer>
           {authenticated ? (
             <>
-              <p
-                style={{
-                  marginRight: '2rem'
-                }}
-              >
-                Hi: {user.name}
-              </p>
+              <p>Hi: {user.name}</p>
               <Button bgColor="true" onClick={() => signOut(router)}>
                 Sign Out
               </Button>
@@ -64,7 +53,7 @@ const Header = () => {
               </Link>
             </>
           )}
-        </div>
+        </AuthContainer>
       </Container>
     </header>
   );
