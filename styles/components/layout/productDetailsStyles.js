@@ -27,7 +27,7 @@ export const Title = styled.a`
 export const DescriptionText = styled.p`
   font-size: 1.6rem;
   margin: 0;
-  color: #888;
+  color: rgb(146, 147, 141);
 `;
 
 export const Comments = styled.div`

@@ -20,6 +20,8 @@ app
     // GOOGLE AND FACEBOOK AUTH ROUTES
     passportRoutes(server);
 
+    server.use('/public', express.static('public'));
+
     server.get('*', (req, res) => {
       return handle(req, res);
     });

@@ -36,6 +36,10 @@ const Search = () => {
         onChange={formik.handleChange}
         name="search"
         value={formik.values.search}
+        spellCheck="false"
+        aria-label="search"
+        aria-haspopup="false"
+        role="button"
       />
       <ButtonSubmit type="submit">Search</ButtonSubmit>
     </form>

@@ -9,7 +9,7 @@ export const Button = styled.a`
   margin: 2rem auto;
   text-align: center;
   background-color: ${(props) => (props.bgColor ? '#da552f' : '#fff')};
-  color: ${(props) => (props.bgColor ? '#fff' : '#000')};
+  color: ${(props) => (props.bgColor ? 'rgb(230,228,228)' : '#000')};
   &:last-of-type {
     margin-right: 0;
   }

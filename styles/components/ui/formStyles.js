@@ -34,7 +34,7 @@ export const ButtonSubmit = styled.button`
   width: 100%;
   padding: 1.5rem;
   text-align: center;
-  color: #fff;
+  color: rgb(230, 228, 228);
   font-size: 1.8rem;
   text-transform: uppercase;
   border: none;
