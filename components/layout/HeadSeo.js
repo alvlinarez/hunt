@@ -10,7 +10,8 @@ const HeadSeo = ({ title }) => {
         name="description"
         content="Lite Hunt website made with MERN by @alvlinarez."
       />
-      <link rel="preconnect" href="http://localhost:5000" />
+      {/*<link rel="preconnect" href="http://localhost:5000" />*/}
+      <link rel="preconnect" href="https://hunt.alvlinarez.dev/hunt-server" />
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
