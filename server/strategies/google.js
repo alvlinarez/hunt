@@ -8,8 +8,7 @@ const config = require('../config');
 const googleOptions = {
   clientID: config.googleClientId,
   clientSecret: config.googleClientSecret,
-  //callbackURL: 'https://alvlinarez.dev/auth/google/callback'
-  callbackURL: '/auth/google/callback'
+  callbackURL: 'https://hunt.alvlinarez.dev/auth/google/callback'
 };
 
 passport.use(
